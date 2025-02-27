@@ -1,26 +1,78 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import styles from "./components/Site.module.css";
+import {Adidas} from "./components/pages/Adidas";
+import {Puma} from "./components/pages/Puma";
+import {Abibas} from "./components/pages/Abibas";
+import {Navigate, NavLink, Route, Routes} from "react-router-dom";
+import {Error404} from "./components/pages/Error404";
+import { NavWrapper } from './components/pages/_styled';
+import {Model} from "./components/pages/Model";
+
+const PATH = {
+    PAGE1: '/adidas',
+    PAGE2: '/puma',
+    PAGE3: '/abibas',
+    ERROR: '/page/error'
+} as const
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div>
+            <div className={styles.header}><h1>HEADER</h1></div>
+            <div className={styles.body}>
+                <div className={styles.nav}>
+                    {/*<div>*/}
+                    {/*    <NavLink to={"/page1"} className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink}>*/}
+                    {/*        Page1*/}
+                    {/*    </NavLink>*/}
+                    {/*</div>*/}
+                    {/*<div>*/}
+                    {/*    <NavLink to={"/page2"} className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink}>*/}
+                    {/*        Page2*/}
+                    {/*    </NavLink>*/}
+                    {/*</div>*/}
+                    {/*<div>*/}
+                    {/*    <NavLink to={"/page3"} className={(props) => props.isActive ? styles.activeNavLink : styles.navLink}>*/}
+                    {/*        Page3*/}
+                    {/*    </NavLink>*/}
+                    {/*</div>*/}
+
+                    <NavWrapper>
+                        <NavLink to={PATH.PAGE1}>
+                            Adidas
+                        </NavLink>
+                    </NavWrapper>
+                    <NavWrapper>
+                        <NavLink to={PATH.PAGE2}>
+                            Puma
+                        </NavLink>
+                    </NavWrapper>
+                    <NavWrapper>
+                        <NavLink to={PATH.PAGE3}>
+                            Abibas
+                        </NavLink>
+                    </NavWrapper>
+                </div>
+                <div className={styles.content}>
+                    <Routes>
+                        <Route path={PATH.PAGE1} element={<Adidas/>}/>
+                        <Route path={"/"} element={<Navigate to={PATH.PAGE1}/>}/>
+
+                        <Route path={PATH.PAGE2} element={<Puma/>}/>
+                        <Route path={PATH.PAGE3} element={<Abibas/>}/>
+                        <Route path={'/:model/:id'} element={<Model/>}/>
+
+                        <Route path={"/*"} element={<Error404/>}/>
+                        {/*<Route path={"/*"} element={<Navigate to={PATH.ERROR}/>}/>*/}
+
+                    </Routes>
+
+                </div>
+            </div>
+            <div className={styles.footer}>abibas 2023</div>
+        </div>
+    );
 }
 
 export default App;
+
