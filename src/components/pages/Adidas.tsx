@@ -3,7 +3,7 @@ import adidasModel1 from "../../assets/AdiFOM_TRXN_Shoes_Black_IG7453_01_standar
 import adidasModel2 from "../../assets/Superstar_XLG_Shoes_Black_IG9777_01_standard.webp";
 import adidasModel3
     from "../../assets/PostMove_Mid_Cloudfoam_Super_Lifestyle_Basketball_Mid_Classic_Shoes_Black_GY7163_01_standard.webp";
-import {Link} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 
 export type AdidasItem = {
     id: number
