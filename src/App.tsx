@@ -1,13 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from "./components/Site.module.css";
-import {Adidas} from "./components/pages/Adidas";
-import {Puma} from "./components/pages/Puma";
-import {Abibas} from "./components/pages/Abibas";
-import {Navigate, NavLink, Outlet, Route, Routes} from "react-router-dom";
-import {Error404} from "./components/pages/Error404";
-import { NavWrapper } from './components/pages/_styled';
-import {Model} from "./components/pages/Model";
-import {Prices} from "./components/pages/Prices";
+import {NavLink, Outlet} from "react-router-dom";
+import {NavWrapper} from './components/pages/_styled';
 
 const PATH = {
     PAGE1: '/adidas',
@@ -15,6 +9,7 @@ const PATH = {
     PAGE3: '/abibas',
     ERROR: '/page/error',
     PRICES: '/prices',
+    PROTECTEDPAGE: '/protectedPage'
 } as const
 
 function App() {
@@ -57,6 +52,11 @@ function App() {
                     <NavWrapper>
                         <NavLink to={PATH.PRICES}>
                             Prices
+                        </NavLink>
+                    </NavWrapper>
+                    <NavWrapper>
+                        <NavLink to={PATH.PROTECTEDPAGE}>
+                            Protected Page
                         </NavLink>
                     </NavWrapper>
                 </div>
