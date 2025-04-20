@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./components/Site.module.css";
-import {NavLink, Outlet} from "react-router-dom";
+import {Link, NavLink, Outlet, useNavigate} from "react-router-dom";
 import {NavWrapper} from './components/pages/_styled';
 
 const PATH = {
@@ -13,6 +13,11 @@ const PATH = {
 } as const
 
 function App() {
+    const navigate = useNavigate()
+    const navigateHandler = () => {
+        navigate(-1)
+    }
+
     return (
         <div>
             <div className={styles.header}><h1>HEADER</h1></div>
@@ -74,6 +79,10 @@ function App() {
                     {/*    /!*<Route path={"/*"} element={<Navigate to={PATH.ERROR}/>}/>*!/*/}
 
                     {/*</Routes>*/}
+                    <div className={styles.horizontalNavigation}>
+                        <Link to={PATH.PAGE1} className={styles.linkLikeButton}>To main page</Link>
+                        <button onClick={navigateHandler} className={styles.buttonLikeLink}>Back</button>
+                    </div>
                     <Outlet/>
                 </div>
             </div>

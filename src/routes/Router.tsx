@@ -28,6 +28,10 @@ const publicRoutes: RouteObject[] = [
         element: <Adidas/>,
     },
     {
+        path: '/',
+        element: <Navigate to={PATH.ADIDAS}/>,
+    },
+    {
         path: PATH.PUMA,
         element: <Puma/>,
     },
